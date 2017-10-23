@@ -1,5 +1,6 @@
 ﻿import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
+import { HamperComponent } from './hamper/hamper.component'
 
 @Component({
     selector: 'my-app',
@@ -9,5 +10,7 @@ import { OnInit } from '@angular/core';
 
 
 export class AppComponent {
-    title = 'My First Angular 2 App'
+
+    title = 'Grande Gifts'
+    
 }

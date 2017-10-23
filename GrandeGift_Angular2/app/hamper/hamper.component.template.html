@@ -1,0 +1,45 @@
+﻿
+<div class="container">
+    <h1>{{title}}</h1>
+
+    <div class="container">
+        <div class="row">
+            <!--<div class="col-8">
+                <div class="form-group">
+                    <label>Search</label>
+                    <input type="text" class="form-control" [(ngModel)]="query" />
+                </div>
+            </div>-->
+            <div class="col-4">
+                <div class="form-group">
+                    <label>Category</label>
+                    <select class="form-control" [(ngModel)]="selectedCategory" (change)="search()">
+                        <option></option>
+                        <option *ngFor="let cat of categories">{{cat.name}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+
+        <!--<button class="btn btn-success" type="button" (click)="search()" style="width:100%;">Go</button>-->
+    </div>
+    
+
+    <table class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+        </tr>
+        <tr *ngFor="let hamper of hampers">
+            <td>{{hamper.hamperId}}</td>
+            <td>{{hamper.name}}</td>
+            <td>{{hamper.price | currency}}</td>
+            <td>{{hamper.category.name}}</td>
+        </tr>
+    </table>
+</div>
+
+
