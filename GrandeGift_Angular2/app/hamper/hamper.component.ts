@@ -27,24 +27,24 @@ export class HamperComponent {
     categories: Category[] = [];
 
     ngOnInit() {
-        this.hampers = this._hamperService.getAllHampers();
-        this.categories = this._hamperService.getAllCategories();
+        this._hamperService.getAllHampers()
+            .subscribe(Response => (this.hampers = Response));
 
-        //this._hamperService.getAllHampers()
-        //    .subscribe(Response => (this.hampers = Response));
+        this._hamperService.getAllCategories()
+            .subscribe(Response => (this.categories = Response));
+    }
+
+    test() {
+        alert(this.categories.length);
     }
 
     search() {
-        //if (!this.query) {
-        //    this.hampers = this._hamperService.getAllHampers();
-        //}
-        //else {
-        //    this.hampers.find(h => h.name == this.query)
-        //}
-        this.hampers = this._hamperService.getAllHampers();
-
         if (this.selectedCategory != ""){
             this.hampers = this.hampers.filter(h => h.category.name == this.selectedCategory);
+        }
+        else {
+            this._hamperService.getAllHampers()
+                .subscribe(Response => (this.hampers = Response));
         }
     }
 }
