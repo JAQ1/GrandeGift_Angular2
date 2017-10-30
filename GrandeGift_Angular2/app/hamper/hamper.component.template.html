@@ -31,7 +31,7 @@
             <th>Price</th>
             <th>Category</th>
         </tr>
-        <tr *ngFor="let hamper of hampers">
+        <tr *ngFor="let hamper of tempHampers">
             <td>{{hamper.hamperId}}</td>
             <td>{{hamper.name}}</td>
             <td>{{hamper.price | currency}}</td>

@@ -17,26 +17,28 @@ let HamperComponent = class HamperComponent {
         this.title = 'Hampers';
         this.selectedCategory = "";
         this.hampers = [];
+        this.tempHampers = [];
         this.categories = [];
     }
     ;
     ngOnInit() {
         this._hamperService.getAllHampers()
-            .subscribe(Response => (this.hampers = Response));
+            .subscribe(Response => (this.hampers = Response, this.tempHampers = Response));
         this._hamperService.getAllCategories()
             .subscribe(Response => (this.categories = Response));
     }
-    test() {
-        alert(this.categories.length);
-    }
     search() {
+        //this._hamperService.getAllHampers()
+        //    .subscribe(Response => (this.hampers = Response));
         if (this.selectedCategory != "") {
-            this.hampers = this.hampers.filter(h => h.category.name == this.selectedCategory);
+            this.tempHampers = this.hampers.filter(h => h.category.name == this.selectedCategory);
         }
         else {
-            this._hamperService.getAllHampers()
-                .subscribe(Response => (this.hampers = Response));
+            this.tempHampers = this.hampers;
         }
+    }
+    test() {
+        alert(this.tempHampers.length);
     }
 };
 HamperComponent = __decorate([
